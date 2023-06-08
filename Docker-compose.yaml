@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  web:
+    image: tomcat:8.0-alpine
+    ports:
+      - "8080:8080"
+    volumes:
+      - app:/usr/local/tomcat/webapps
+  application:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - app:/tmp/boxfuse-sample-java-war-hello/target/
+volumes:
+  app:
